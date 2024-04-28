@@ -5,10 +5,42 @@ import Bio from "../components/bio"
 import Layout from "../components/layout"
 import Seo from "../components/seo"
 
+interface SiteMetadata {
+  title: string;
+}
+
+interface Frontmatter {
+  title: string;
+  date?: string;
+  description?: string;
+}
+
+interface MarkdownRemark {
+  id: string;
+  html: string;
+  frontmatter: Frontmatter;
+  excerpt: string;
+  fields: {
+    slug: string;
+  };
+}
+
+interface BlogPostTemplateProps {
+  data: {
+    site: {
+      siteMetadata: SiteMetadata;
+    };
+    markdownRemark: MarkdownRemark;
+    previous?: MarkdownRemark;
+    next?: MarkdownRemark;
+  };
+  location: Location;
+}
+
 const BlogPostTemplate = ({
   data: { previous, next, site, markdownRemark: post },
   location,
-}) => {
+}:BlogPostTemplateProps) => {
   const siteTitle = site.siteMetadata?.title || `Title`
 
   return (
@@ -61,7 +93,7 @@ const BlogPostTemplate = ({
   )
 }
 
-export const Head = ({ data: { markdownRemark: post } }) => {
+export const Head = ({ data: { markdownRemark: post } }:any) => {
   return (
     <Seo
       title={post.frontmatter.title}

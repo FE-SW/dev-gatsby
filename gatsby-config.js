@@ -20,6 +20,7 @@ module.exports = {
       twitter: `kylemathews`,
     },
   },
+  pathPrefix: `/`,
   plugins: [
     `gatsby-plugin-image`,
     {
