@@ -13,7 +13,7 @@ interface QueryData {
       title: string;
       description: string;
       social: {
-        twitter: string;
+        github: string;
       };
     };
   };
@@ -28,7 +28,7 @@ const Seo = ({ description, title, children }:SeoProps) => {
             title
             description
             social {
-              twitter
+              github
             }
           }
         }
@@ -46,13 +46,13 @@ const Seo = ({ description, title, children }:SeoProps) => {
       <meta property="og:title" content={title} />
       <meta property="og:description" content={metaDescription} />
       <meta property="og:type" content="website" />
-      <meta name="twitter:card" content="summary" />
+      <meta name="github:card" content="summary" />
       <meta
-        name="twitter:creator"
-        content={site.siteMetadata?.social?.twitter || ``}
+        name="github:creator"
+        content={site.siteMetadata?.social?.github || ``}
       />
-      <meta name="twitter:title" content={title} />
-      <meta name="twitter:description" content={metaDescription} />
+      <meta name="github:title" content={title} />
+      <meta name="github:description" content={metaDescription} />
       {children}
     </>
   )

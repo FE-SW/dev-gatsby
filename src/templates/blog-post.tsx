@@ -6,41 +6,41 @@ import Layout from "../components/layout"
 import Seo from "../components/seo"
 
 interface SiteMetadata {
-  title: string;
+  title: string
 }
 
 interface Frontmatter {
-  title: string;
-  date?: string;
-  description?: string;
+  title: string
+  date?: string
+  description?: string
 }
 
 interface MarkdownRemark {
-  id: string;
-  html: string;
-  frontmatter: Frontmatter;
-  excerpt: string;
+  id: string
+  html: string
+  frontmatter: Frontmatter
+  excerpt: string
   fields: {
-    slug: string;
-  };
+    slug: string
+  }
 }
 
 interface BlogPostTemplateProps {
   data: {
     site: {
-      siteMetadata: SiteMetadata;
-    };
-    markdownRemark: MarkdownRemark;
-    previous?: MarkdownRemark;
-    next?: MarkdownRemark;
-  };
-  location: Location;
+      siteMetadata: SiteMetadata
+    }
+    markdownRemark: MarkdownRemark
+    previous?: MarkdownRemark
+    next?: MarkdownRemark
+  }
+  location: Location
 }
 
 const BlogPostTemplate = ({
   data: { previous, next, site, markdownRemark: post },
   location,
-}:BlogPostTemplateProps) => {
+}: BlogPostTemplateProps) => {
   const siteTitle = site.siteMetadata?.title || `Title`
 
   return (
@@ -64,25 +64,25 @@ const BlogPostTemplate = ({
         </footer>
       </article>
       <nav className="blog-post-nav">
-        <ul
-          style={{
-            display: `flex`,
-            flexWrap: `wrap`,
-            justifyContent: `space-between`,
-            listStyle: `none`,
-            padding: 0,
-          }}
-        >
+        <ul className="flex flex-wrap justify-between list-none p-0">
           <li>
             {previous && (
-              <Link to={previous.fields.slug} rel="prev">
+              <Link
+                to={previous.fields.slug}
+                rel="prev"
+                className="text-blue-500 hover:text-blue-600"
+              >
                 ← {previous.frontmatter.title}
               </Link>
             )}
           </li>
           <li>
             {next && (
-              <Link to={next.fields.slug} rel="next">
+              <Link
+                to={next.fields.slug}
+                rel="next"
+                className="text-blue-500 hover:text-blue-600"
+              >
                 {next.frontmatter.title} →
               </Link>
             )}
@@ -93,7 +93,7 @@ const BlogPostTemplate = ({
   )
 }
 
-export const Head = ({ data: { markdownRemark: post } }:any) => {
+export const Head = ({ data: { markdownRemark: post } }: any) => {
   return (
     <Seo
       title={post.frontmatter.title}

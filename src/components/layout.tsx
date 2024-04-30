@@ -32,10 +32,8 @@ const Layout = ({ location, title, children }:LayoutProps) => {
     <div className="global-wrapper" data-is-root-path={isRootPath}>
       <header className="global-header">{header}</header>
       <main>{children}</main>
-      <footer>
-        © {new Date().getFullYear()}, Built with
-        {` `}
-        <a href="https://www.gatsbyjs.com">Gatsby</a>
+      <footer className="flex items-center justify-center text-sm text-gray-500">
+        © {` `} jungseokwoo
       </footer>
     </div>
   )
